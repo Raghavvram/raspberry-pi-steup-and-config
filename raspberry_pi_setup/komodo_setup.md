@@ -1,9 +1,19 @@
-## 1. Create .env (copy of compose.env)
+# Komodo Setup using Docker
+
+This guide provides the steps to set up Komodo using Docker.
+
+## 1. Create .env file
+
+Create a `.env` file by copying the `compose.env` file.
+
 ```bash
 cp compose.env .env
 ```
 
-## 2. Updated mongo.compose.yaml (matches your filenames)
+## 2. Updated mongo.compose.yaml
+
+Here is the updated `mongo.compose.yaml` file that matches your filenames.
+
 ```yaml
 services:
   mongo:
@@ -48,6 +58,9 @@ volumes:
 ```
 
 ## 3. Update compose.env with all values
+
+Update the `compose.env` file with the following values.
+
 ```env
 COMPOSE_KOMODO_IMAGE_TAG=latest
 COMPOSE_KOMODO_BACKUPS_PATH=/etc/komodo/backups
@@ -74,13 +87,18 @@ PERIPHERY_DISABLE_TERMINALS=false
 ```
 
 ## 4. Deploy
+
+Run the following commands to deploy Komodo.
+
 ```bash
 sudo mkdir -p /etc/komodo/{backups,}
 
 docker-compose -p komodo -f mongo.compose.yaml --env-file compose.env up -d
 ```
 
-Now it matches your existing filenames exactly. Access: `http://localhost:9120` (admin/admin@007).[1][2]
+Now it matches your existing filenames exactly. Access: `http://localhost:9120` (admin/admin@007).
 
-[1](https://raw.githubusercontent.com/moghtech/komodo/main/compose/mongo.compose.yaml)
-[2](https://komo.do/docs/setup)
+## References
+
+[1] [https://raw.githubusercontent.com/moghtech/komodo/main/compose/mongo.compose.yaml](https://raw.githubusercontent.com/moghtech/komodo/main/compose/mongo.compose.yaml)
+[2] [https://komo.do/docs/setup](https://komo.do/docs/setup)
